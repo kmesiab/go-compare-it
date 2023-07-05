@@ -1,7 +1,7 @@
 # Go Compare It
 ![Go Workflow](https://github.com/kmesiab/go-compare-it/actions/workflows/go.yml/badge.svg)
-
-![Golang](https://img.shields.io/badge/Go-00add8.svg?labelColor=171e21&style=for-the-badge&logo=go)
+!
+[Golang](https://img.shields.io/badge/Go-00add8.svg?labelColor=171e21&style=for-the-badge&logo=go)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)
@@ -70,7 +70,6 @@ with newly compared products.
 Go Compare It&trade; uses [OpenLLaMA](https://github.com/yxuansu/OpenAlpaca) trained on
 product reviews from hundreds of large online retailers to produce detailed comparison
 summaries.
-
 ---
 # Author
 Kevin Mesiab &lt;kmesiab@gmail.com&gt;

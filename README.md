@@ -33,6 +33,23 @@ To get started with Go Compare It, follow these steps:
 3. 🌐 The base URL is `/api/v1/`
 
 
-## 📖 Documentation
+## This application is…
 
-For more information on how to use Go Compare It, check out the [documentation](https://www.example.com/documentation).
+…written in [Go](https://go.dev/), 
+ backed by [PostgreSQL](https://www.postgresql.org/), 
+ powered by [dGraph](https://github.com/dgraph-io/dgraph),
+ made sentient by [OpenLLaMA](https://github.com/yxuansu/OpenAlpaca)...
+
+## Graph Database
+Go Compare It uses a graph database to maintain high dimensional relationships 
+between products, prices, customer sentiment, reliability analysis, and a myriad 
+of other informative bits of data. For an introduction to graph databases, check out 
+Developing a Small-Scale Graph Database: A Ten Step Learning Guide for Beginners.
+
+## PostgreSQL
+Go Compare It uses a relational database to store and manage the ticky tacky 
+administrative minutiae of a web platform.
+
+
+# Author
+Kevin Mesiab <kmesiab@gmail.com>

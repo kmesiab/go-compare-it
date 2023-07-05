@@ -13,7 +13,6 @@ func main() {
 func initRoutes(router *gin.Engine) *gin.Engine {
 
 	// Infrastructure Routes
-	router.GET("/ping", controller.PingController)
 	router.GET("/healthcheck", controller.HealthcheckController)
 
 	// Application Routes

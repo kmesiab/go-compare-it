@@ -10,10 +10,10 @@ Go Compare It is an AI-based comparison engine that allows users to build lists 
 
 ## 🎁 Features
 
-- AI-powered product comparison
-- GPT-4 Large Language Model integration
-- Proprietary product analysis graph
-- Docker Compose environment for easy installation
+- 🤖 AI-powered product comparison
+- 📚 GPT-4 Large Language Model integration
+- 📊 Proprietary product analysis graph
+- 🐳 Docker Compose environment for easy installation
 
 ## 🔨 Installation
 
@@ -30,7 +30,7 @@ To get started with Go Compare It, follow these steps:
     ```
     <http://localhost:8080/healthcheck>
     ```
-3. The base URL is `/api/v1/`
+3. 🌐 The base URL is `/api/v1/`
 
 
 ## 📖 Documentation

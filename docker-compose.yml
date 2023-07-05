@@ -26,6 +26,15 @@ services:
       - pg_conf:/etc/postgresql
       - pg_log:/var/log/postgresql
       - pg_data:/var/lib/postgresql/data
+  graph:
+    image: dgraph/dgraph:latest
+    volumes:
+      - /tmp/data:/dgraph
+    ports:
+      - "5080:5080"
+      - "6080:6080"
+    restart: on-failure
+    command: dgraph zero --my=zero:5080
 networks:
   dev_net:
     external:

@@ -42,12 +42,13 @@ To get started with Go Compare It, follow these steps:
 
 ## This application is…
 
-…written in [Go](https://go.dev/),
-backed by [PostgreSQL](https://www.postgresql.org/),
-powered by [dGraph](https://github.com/dgraph-io/dgraph),
+…written in [Go](https://go.dev/)
+using the [Gin Framework](https://github.com/gin-gonic/gin),
+backed by [PostgreSQL](https://www.postgresql.org/) and
+powered by [dGraph](https://github.com/dgraph-io/dgraph).  It has been
 made sentient by [LLaMA.go
-](https://github.com/gotzmann/llama.go),
-and to a lesser extent [OpenLLaMA](https://github.com/yxuansu/OpenAlpaca)...
+](https://github.com/gotzmann/llama.go)
+(and to a lesser extent [OpenLLaMA](https://github.com/yxuansu/OpenAlpaca))...
 
 ## Graph Database
 Go Compare It&trade; uses a graph database to maintain high dimensional space for relationships

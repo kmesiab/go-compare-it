@@ -3,9 +3,11 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/kmesiab/go-compare-it/internal/controller"
+	"net/http"
 )
 
 const currentVersionPath = "/api/v1/"
+const staticRoute = "/a/1/"
 
 // apiRoutes is the router group based on the root
 // path defined in router.currentVersionPath
@@ -15,8 +17,8 @@ var apiRoutes *gin.RouterGroup
 // gin engine
 func Init(router *gin.Engine) {
 
-	// Infrastructure Routes
 	router.GET("/healthcheck", controller.Healthcheck)
+	router.StaticFS(staticRoute, http.Dir("public"))
 
 	if apiRoutes == nil {
 		apiRoutes = router.Group(currentVersionPath)
@@ -28,6 +30,5 @@ func Init(router *gin.Engine) {
 // InitApiRoutes attaches all API endpoints to the
 // current api's router group
 func InitApiRoutes(router *gin.RouterGroup) {
-	router.POST("/api/v1/users/create", controller.CreateUser)
-
+	router.POST("users", controller.CreateUser)
 }

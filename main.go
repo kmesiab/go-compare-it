@@ -12,7 +12,7 @@ func main() {
 
 	router.Init(r)
 
-	err := middleware.RegisterMiddleware(middleware.Logger())
+	err := middleware.RegisterMiddleware("logger", middleware.Logger())
 	if err != nil {
 		panic(err)
 	}

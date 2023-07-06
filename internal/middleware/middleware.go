@@ -7,43 +7,43 @@ import (
 )
 
 var hasInitialized bool = false
-var processors []gin.HandlerFunc
+var middleware = map[string]gin.HandlerFunc{}
 
-func processorExists(p interface{}) bool {
-	for _, e := range processors {
-		if &e == p {
-			return true
+func GetAllMiddleware() map[string]gin.HandlerFunc {
+	return middleware
+}
+
+func GetMiddleware(name string) gin.HandlerFunc {
+	for key, fn := range middleware {
+		if key == name {
+			return fn
 		}
 	}
-	return false
+	return nil
 }
 
 // RegisterMiddleware takes a handler function and adds it to the
-// list of processors to be initialized.  Any processors registered
-// after Init() is called, are not added to the gin engine.
-func RegisterMiddleware(m gin.HandlerFunc) error {
+// list of middleware to be initialized.  Any middleware registered
+// after Init() are not added to the gin engine.
+func RegisterMiddleware(name string, fn gin.HandlerFunc) error {
 
 	if hasInitialized {
 		return errors.New("cannot add middleware after initialization")
 	}
 
-	if !processorExists(m) {
-		processors = append(processors, m)
-		fmt.Println("Added processor")
+	if nil != GetMiddleware(name) {
+		return errors.New(fmt.Sprintf("middleware '%s' has already been loaded", name))
 	}
 
+	middleware[name] = fn
 	return nil
 }
 
-// Init adds all registered processors to the
-// `gin.Engine` for runtime
-func Init(router *gin.Engine) *gin.Engine {
+// Init adds all registered middleware to the gin.Engine for runtime
+func Init(r *gin.Engine) {
 
 	hasInitialized = true
-	for _, p := range processors {
-		router.Use(p)
+	for _, p := range middleware {
+		r.Use(p)
 	}
-
-	return router
-
 }

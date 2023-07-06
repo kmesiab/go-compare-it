@@ -10,9 +10,8 @@ func Logger() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		t := time.Now()
 
-		c.
-			// before request
-			c.Next()
+		// before request
+		c.Next()
 		// after request
 
 		latency := time.Since(t)

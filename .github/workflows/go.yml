@@ -5,24 +5,56 @@ name: Go
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "**" ]
   pull_request:
     branches: [ "main" ]
 
 jobs:
 
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
+    name: Run unit tests
+
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up Go
-      uses: actions/setup-go@v3
+    - name: ⚙️ Set up Go
+      uses: actions/setup-go@v4
       with:
-        go-version: 1.19
+        go-version: '>=1.20.0'
 
-    - name: Build
+    - name: 🔧 Build
       run: go build -v ./...
 
-    - name: Test
+    - name: 🧹 Tidy
+      run: go mod tidy
+
+    - name: ✅ Test
       run: go test -v ./...
+
+  run_and_serve:
+    runs-on: ubuntu-latest
+    name: Serve API and test Healthcheck
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: ⚙️ Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '>=1.20.0'
+
+      - name: 🔧 Build
+        run: go build
+
+      - name: ✅ Start the server
+        run: ./go-compare-it &
+
+      - name: Curl gut check
+        run: curl -v localhost:8080/healthcheck | jq -r ".service"
+
+      - name: 🩺 Ping the healthcheck
+        run: | 
+          chmod +x .github/workflows/scripts/ping.sh
+          sh .github/workflows/scripts/ping.sh
+

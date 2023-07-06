@@ -1,43 +1,27 @@
 package main
 
-import "github.com/gin-gonic/gin"
-import "github.com/kmesiab/go-compare-it/internal/controller"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/kmesiab/go-compare-it/internal/middleware"
+	"github.com/kmesiab/go-compare-it/internal/router"
+)
 
+// 0.0.0.0:8080
 func main() {
 	r := gin.Default()
-	initRoutes(r)
-	initMiddleware(r)
-	r.Run() // listen and serve on 0.0.0.0:8080
-}
 
-func initRoutes(router *gin.Engine) *gin.Engine {
+	router.Init(r)
 
-	// Infrastructure Routes
-	router.GET("/healthcheck", controller.HealthcheckController)
+	err := middleware.RegisterMiddleware(middleware.Logger())
+	if err != nil {
+		panic(err)
+	}
 
-	// Application Routes
+	middleware.Init(r)
 
-	// API Routes
-	// Current root: /api/v1/
-	//
-	// r.GET("/api/v1/docs")
-	//
+	err = r.Run()
 
-	// Create a new user
-	// POST /users/create
-	router.POST("/api/v1/users/create", controller.CreateUser)
-
-	return router
-}
-
-func initMiddleware(router *gin.Engine) *gin.Engine {
-
-	/*
-		for _, r := range middleware.GetAll() {
-			r.Use(m)
-		}
-	*/
-
-	return router
-
+	if err != nil {
+		panic(err)
+	}
 }

@@ -9,4 +9,3 @@ else
    echo "The API did not respond to a healthcheck"
    exit 1
 fi
-

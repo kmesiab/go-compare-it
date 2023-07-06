@@ -50,10 +50,8 @@ jobs:
       - name: ✅ Start the server
         run: ./go-compare-it &
 
-      - name: Curl gut check
-        run: curl -v localhost:8080/healthcheck | jq -r ".service"
-
       - name: 🩺 Ping the healthcheck
+        id: ping-script
         run: | 
           chmod +x .github/workflows/scripts/ping.sh
           sh .github/workflows/scripts/ping.sh

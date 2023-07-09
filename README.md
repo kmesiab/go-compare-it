@@ -73,5 +73,4 @@ summaries.
 
 ---
 # Author
-Kevin Mesiab <kmesiab@gmail.com>
-HyperWrite Logo
+Kevin Mesiab &lt;kmesiab@gmail.com&gt;
